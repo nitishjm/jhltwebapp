@@ -49,33 +49,39 @@
 					</div>
 					<div class="row justify-content-center">
 						<div class="col-md-6">
-							<table class="table">
+							<div class="table-responsive-md">
 								<tbody>
-									<tr>
-										<th style="text-align: center;" scope="row">&nbsp;Name:</th>
-										<td style="text-align: center;" id="account_name"><?php print($_SESSION['fname'] . " " . $_SESSION['lname']); ?></td>	
-										<td><button type="button" data-toggle="modal" data-target="#name"><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/2000px-Edit_icon_%28the_Noun_Project_30184%29.svg.png' width='15' height='15'/></button></td>
-									</tr>
-									<tr>
-										<th style="text-align: center;" scope="row">&nbsp;Email:</th>
-										<td style="text-align: center;" id="account_email"><?php print($_SESSION['email']); ?></td>	
-										<td><button type="button" data-toggle="modal" data-target="#email_modal"><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/2000px-Edit_icon_%28the_Noun_Project_30184%29.svg.png' width='15' height='15'/></button></td>
-									</tr>
-									<tr>
-										<th style="text-align: center;" scope="row">&nbsp;Student #:</th>
-										<td style="text-align: center;" id="account_number"><?php print($_SESSION['student_id']); ?></td>
-										<td><button type="button" data-toggle="modal" data-target="#studentnumber_modal"><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/2000px-Edit_icon_%28the_Noun_Project_30184%29.svg.png' width='15' height='15'/></button></td>
-									</tr>
-									<tr>
-										<th style="text-align: center;" scope="row">&nbsp;Password:</th>
-										<td style="text-align: center;" >*********</td>
-										<td><button type="button" data-toggle="modal" data-target="#password_modal"><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/2000px-Edit_icon_%28the_Noun_Project_30184%29.svg.png' width='15' height='15'/></button></td>
-									</tr>
+									<table class="table table-bordered">
+										<tr>
+											<th style="text-align: center; width: 107px;" scope="row">&nbsp;Name:</th>
+											<td style="text-align: center;" id="account_name"><?php print($_SESSION['fname'] . " " . $_SESSION['lname']); ?></td>	
+											<td style="width: 50px;"><button type="button" data-toggle="modal" data-target="#name"><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/2000px-Edit_icon_%28the_Noun_Project_30184%29.svg.png' width='15' height='15'/></button></td>
+										</tr>
+										<tr>
+											<th style="text-align: center;" scope="row">&nbsp;Email:</th>
+											<td style="text-align: center;" id="account_email"><?php print($_SESSION['email']); ?></td>	
+											<td><button type="button" data-toggle="modal" data-target="#email_modal"><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/2000px-Edit_icon_%28the_Noun_Project_30184%29.svg.png' width='15' height='15'/></button></td>
+										</tr>
+										<tr>
+											<th style="text-align: center;" scope="row">&nbsp;Student #:</th>
+											<td style="text-align: center;" id="account_number"><?php print($_SESSION['student_id']); ?></td>
+											<td><button type="button" data-toggle="modal" data-target="#studentnumber_modal"><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/2000px-Edit_icon_%28the_Noun_Project_30184%29.svg.png' width='15' height='15'/></button></td>
+										</tr>
+										<tr>
+											<th style="text-align: center;" scope="row">&nbsp;Password:</th>
+											<td style="text-align: center;" >*********</td>
+											<td><button type="button" data-toggle="modal" data-target="#password_modal"><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/2000px-Edit_icon_%28the_Noun_Project_30184%29.svg.png' width='15' height='15'/></button></td>
+										</tr>
+									</table>
 								</tbody>
-							</table>
-							
-							<button type="button" style="margin-left: 200px;" class="btn btn-danger" data-toggle="modal" data-target="#deleteaccount_modal">Delete Account</button></a>
-								
+								<div class="row justify-content-center" style="padding-bottom: 10px;">
+									<?php 
+										if($_SESSION['ID'] != 0){
+											echo "<button type='button' class='btn btn-danger' data-toggle='modal' data-target='#deleteaccount_modal'>Delete Account</button></a>";
+										}
+									?>	
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

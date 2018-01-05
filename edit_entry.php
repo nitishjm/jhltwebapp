@@ -40,6 +40,9 @@
 		<link rel="stylesheet" href="css/style.css">
 		
 		<!-- FORM CHECKING WITH JAVASCRIPT -->
+		<script type="text/javascript">
+			 var searched_id ='<?php echo $_SESSION['searched_id'];?>'
+		</script>
 		<script src="js/update_entry.js" type="text/javascript"></script>
 		
 	</head>
@@ -83,8 +86,8 @@
 								</div>
 								
 								<div class="form-group">
-									<label for="coordinator">Did you coordinate?&nbsp;&nbsp;&nbsp;&nbsp;</label><br>
-									
+									<label for="coordinator">Did you coordinate?&nbsp;</label>
+									<small style="text-align: left;" id="warning" >Your hours will be automatically doubled</small><br>
 									<div class="form-check form-check-inline">
 									  <label class="form-check-label">
 										<input class="form-check-input" type="radio" name="coordinator" id="yes" <?php if($coordinated){ print("checked"); }?>> Yes

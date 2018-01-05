@@ -1,9 +1,11 @@
 <?php
 	session_start();
 	include 'database/check_login/check_login.php';
-	if($_SESSION['ID'] == 0){
-		header("Location: find_log.php");
-	}
+	include 'database/connect.php';
+	$_SESSION['searched_id'] = $_GET['student_number'];
+	$SQL = "SELECT firstname, lastname FROM tbl_users WHERE student_id='".$_SESSION['searched_id']."'";
+	$result = mysqli_query($db_found, $SQL);
+	$row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,8 +61,8 @@
 			<div class="container text-dark">
 				<div class="row">
 					<div class="col" style="background-color: rgba(248,249,250,0.75); border-radius: 10px; padding-bottom: 20px;">
-						<h1 class="display-3 text-center">Your log:</h1>
-						<?php include('database/get_log.php'); ?>
+						<h1 class="display-3 text-center"><?php print($row['firstname'] . " " . $row['lastname']); ?>'s log:</h1>
+						<?php include('database/find_log.php'); ?>
 						<button type="button" style="float: right;" class="btn btn-danger" onclick="delete_all();">Delete all entries</button></a>
 					</div>
 				</div>

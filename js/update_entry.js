@@ -47,7 +47,8 @@ function check_info(entry_id){
 						_("edit_form").reset();
 						_("error_msg").setAttribute("class", "text-success");
 						_("error_msg").innerHTML = "Entry was updated successfully. Lets go back to your log.";
-						setTimeout("location.href = 'my_log.php';", 200);
+						
+						setTimeout("location.href = 'found_log.php?student_number="+searched_id+"';", 200);
 					}else{
 						_("error_msg").setAttribute("class", "text-danger");
 						_("error_msg").innerHTML = xhr.responseText;

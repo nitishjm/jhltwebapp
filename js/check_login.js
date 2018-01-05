@@ -35,7 +35,7 @@ function check_info(){
 					_("login_form").reset();
 					_("error_msg").setAttribute("class", "text-success");
 					_("error_msg").innerHTML = "One moment please...";
-					window.setTimeout(function (){window.location.href = "my_log.php";}, 1000);
+					window.location.href = "my_log.php";
 				}else{
 					_("error_msg").setAttribute("class", "text-danger");
 					_("error_msg").innerHTML = xhr.responseText;

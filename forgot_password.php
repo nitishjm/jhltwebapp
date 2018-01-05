@@ -35,27 +35,22 @@
 				<div class="jumbotron" style="background-color: rgba(12,12,12,0.75); border-radius: 10px;">
 					<div class="row align-items-center">
 						<div class="col">
-							<h1 class="display-3 text-center">Hello!</h1>
-							<p class="lead text-center">Please sign in</p>
+							<h1 class="display-3 text-center">That's ok!</h1>
+							<p class="lead text-center">Enter the email you used to register with</p>
 						</div>
 						<div class="col">
-							<form id="login_form" onsubmit="check_info(); _('login_btn').disabled = false; return false;">
+							<div class="col">
+							<form id="find_form" onsubmit="find_log(); _('find_btn').disabled = false; return false;">
 								<div class="form-group">
-									<label for="email">Email address</label>
-									<input type="text" class="form-control" id="email" placeholder="Enter email">
+									<label for="student_id">Email</label><br>
+									<input type="text" style="width: 310px; float: left;" class="form-control" id="student_id" placeholder="Enter your email">
+									<div class="btn-group d-flex justify-content-end" role="group">
+										<button type="submit" style="float: right;" id="find_btn" class="btn btn-primary">Send link</button>
+										<button type="button" style="float: right;" onclick="window.location.href='index.php';" id="find_btn" class="btn btn-secondary">Cancel</button>
+									</div>
 								</div>
-								<div class="form-group">	
-									<label for="pword">Password</label>
-									<input type="password" class="form-control" id="pword" placeholder="Password">
-								</div>
-								<div class="btn-group d-flex justify-content-center" role="group">
-									<button type="submit" id="login_btn" class="btn btn-primary">Login</button>
-									<button type="button" onclick="window.location.href='register.php'" class="btn btn-info">Register</button>
-									<button type="button" onclick="window.location.href='forgot_password.php'" class="btn btn-secondary">Reset my password!</button>
-								</div>
-								<small style="text-align: center;" id="warning" class="form-text text-muted"><br>Never share your email or password with anyone else. We won't either :)</small>
-								<br>
 							</form>
+						</div>	
 						</div>
 					</div>
 					<div class="col-md-6 offset-md-6" style="text-align: center;">

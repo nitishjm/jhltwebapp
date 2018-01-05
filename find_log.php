@@ -1,9 +1,6 @@
 <?php
 	session_start();
-	include 'database/check_login/check_login.php';
-	if($_SESSION['ID'] == 0){
-		header("Location: find_log.php");
-	}
+	include 'database/check_login/check_admin.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,22 +17,9 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/style.css">
 		
-		<script>
-			function confirm_delete(entry_id){
-				var action =  confirm("Are you sure you want to delete this entry?");
-				if (action == true){
-					window.location.href = "database/delete_entry.php?entry_id="+entry_id;
-				}	
-			}
-			
-			function delete_all(){
-				var action =  confirm("Are you sure you want to delete ALL entries?");
-				if (action == true){
-					window.location.href = "database/clear_log.php";
-				}
-			}
-			
-		</script>
+		<!-- FORM CHECKING WITH JAVASCRIPT -->
+		<script src="js/find_log.js" type="text/javascript"></script>
+		
 	</head>
 	
 	<body>
@@ -57,11 +41,27 @@
 		</nav>
 		<div class="stage" style="padding-top: 100px; margin-bottom: 20px;">
 			<div class="container text-dark">
-				<div class="row">
-					<div class="col" style="background-color: rgba(248,249,250,0.75); border-radius: 10px; padding-bottom: 20px;">
-						<h1 class="display-3 text-center">Your log:</h1>
-						<?php include('database/get_log.php'); ?>
-						<button type="button" style="float: right;" class="btn btn-danger" onclick="delete_all();">Delete all entries</button></a>
+				<div class="jumbotron" style="background-color: rgba(248,249,250,0.75); border-radius: 10px;">
+					<div class="row align-items-center">
+						<div class="col">
+							<h1 class="display-3 text-center">Find a log</h1>
+						</div>
+						<div class="col">
+							<form id="find_form" onsubmit="find_log(); _('find_btn').disabled = false; return false;">
+								<div class="form-group">
+									<label for="student_id">Student number</label><br>
+									<input type="text" style="width: 430px; float: left;" class="form-control" id="student_id" placeholder="Enter student number">
+									<button type="submit" style="float: right;" id="find_btn" class="btn btn-primary">Search</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="col-md-6 offset-md-6" style="text-align: center;">
+						<span id="error_msg" class="text-danger"></span>
+					</div>
+					<div class="row">
+						<div class="col">
+						
 					</div>
 				</div>
 			</div>
