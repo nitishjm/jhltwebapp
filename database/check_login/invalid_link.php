@@ -1,16 +1,3 @@
-<?php
-	session_start();
-	include 'database/check_login/check_login.php';
-	include 'database/connect.php';
-	$_SESSION['searched_id'] = mysqli_real_escape_string($db_found, $_GET['student_number']);
-	$SQL = "SELECT firstname, lastname FROM tbl_users WHERE student_id='".$_SESSION['searched_id']."'";
-	$result = mysqli_query($db_found, $SQL);
-	if(mysqli_num_rows($result) == 0){
-		header("Location: find_log.php?error=true");
-	}else{
-		$row = mysqli_fetch_assoc($result);
-	}
-?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -23,25 +10,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/style.css">
-		
-		<script>
-			function confirm_delete(entry_id){
-				var action =  confirm("Are you sure you want to delete this entry?");
-				if (action == true){
-					window.location.href = "database/delete_entry.php?entry_id="+entry_id;
-				}	
-			}
-			
-			function delete_all(){
-				var action =  confirm("Are you sure you want to delete ALL entries?");
-				if (action == true){
-					window.location.href = "database/clear_log.php";
-				}
-			}
-			
-		</script>
+		<link rel="stylesheet" href="../../css/bootstrap.min.css">
 	</head>
 	
 	<body>
@@ -51,7 +20,7 @@
 			</button>
 			<div class="navbar-brand">
 				<picture style="display: flex; align-items: center">
-					<img src="images/eagle.png" width="60" height="60">
+					<img src="../../images/eagle.png" width="60" height="60">
 					<figcaption class="h5">&nbsp;&nbsp;Welcome <?php print($_SESSION['fname']); ?>!</figcaption>
 				</picture>
 			</div>
@@ -59,21 +28,20 @@
 				<div class="navbar-nav ml-auto">
 					<?php include("database/links.php") ?>
 				</div>
-			</div>	
+			</div>
 		</nav>
-		<div class="stage" style="padding-top: 100px; margin-bottom: 20px;">
-			<div class="container text-dark">
-				<div class="row">
-					<div class="col" style="background-color: rgba(248,249,250,0.75); border-radius: 10px; padding-bottom: 20px;">
-						<h1 class="display-3 text-center"><?php print($row['firstname'] . " " . $row['lastname']); ?>'s log:</h1>
-						<?php include('database/find_log.php'); ?>
-						<button type="button" style="float: right;" class="btn btn-danger" onclick="delete_all();">Delete all entries</button></a>
+		<div class="stage" id="unlogged_user" style="padding-top: 100px;">
+			<div class="container text-light">
+				<div class="jumbotron" style="background-color: rgba(0,0,0,0.75); border-radius: 10px;">
+					<div class="row align-items-center">
+						<div class="col">
+							<h1 class="display-4 text-center">Sorry, that is an invalid link</h1>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		
+	
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

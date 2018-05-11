@@ -21,7 +21,7 @@
 			
 			if($result){
 				
-				$SQL = "SELECT firstname, lastname FROM tbl_users WHERE ID='".$_SESSION['ID']."'";
+				$SQL = "SELECT firstname, lastname FROM tbl_users WHERE ID='".mysqli_real_escape_string($db_found, $_SESSION['ID'])."'";
 				$result = mysqli_query($db_found, $SQL);
 					
 				if($result){

@@ -3,7 +3,7 @@
 	include 'check_login/check_login.php';
 	include 'connect.php';
 
-	$entry_id = $_GET['entry_id'];
+	$entry_id = mysqli_real_escape_string($db_found, $_GET['entry_id']);
 
 	if($db_found) {
 

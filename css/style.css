@@ -5,3 +5,7 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+
+td{
+	border: 1px solid black;	
+}

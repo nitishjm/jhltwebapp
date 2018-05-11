@@ -6,7 +6,6 @@
 	
 	$old_pass = mysqli_real_escape_string($db_found, $_POST['old_pass']);
 	$new_pass = mysqli_real_escape_string($db_found, $_POST['new_pass']);
-	$confirm_pass = mysqli_real_escape_string($db_found, $_POST['confirm_pass']);
 
 	if($db_found){
 		
@@ -15,7 +14,7 @@
 			print "Nothing to update";
 			
 		}else{
-			$SQL = "SELECT password FROM tbl_users WHERE ID='" . $_SESSION['ID'] . "'";
+			$SQL = "SELECT password FROM tbl_users WHERE ID='" . mysqli_real_escape_string($db_found, $_SESSION['ID']) . "'";
 			$result = mysqli_query($db_found, $SQL);
 			
 			if($result){
@@ -28,7 +27,7 @@
 					$update_password = password_hash($new_pass, PASSWORD_DEFAULT);
 					
 					$SQL = "UPDATE tbl_users SET password='".$update_password."'
-							WHERE ID='".$_SESSION['ID']."';";
+							WHERE ID='".mysqli_real_escape_string($db_found, $_SESSION['ID'])."';";
 							
 					$result = mysqli_query($db_found, $SQL);
 					

@@ -5,12 +5,12 @@
 		
 	$event_name = mysqli_real_escape_string($db_found, $_POST['event_name']);
 	$event_desc = mysqli_real_escape_string($db_found, $_POST['event_desc']);
-	$coordinator = $_POST['coordinated'];
+	$coordinator = mysqli_real_escape_string($db_found, $_POST['coordinated']);
 	$hours = mysqli_real_escape_string($db_found, $_POST['hours']);
 	$minutes = mysqli_real_escape_string($db_found, $_POST['minutes']);
-	$date = $_POST['date'];
-	$student_id = $_SESSION['student_id'];
-	$entry_id = $_GET['entry_id'];
+	$date = mysqli_real_escape_string($db_found, $_POST['date']);
+	$student_id = mysqli_real_escape_string($db_found, $_SESSION['student_id']);
+	$entry_id = mysqli_real_escape_string($db_found, $_GET['entry_id']);
 
 	if($db_found) {
 		if($_SESSION['ID'] == 0){

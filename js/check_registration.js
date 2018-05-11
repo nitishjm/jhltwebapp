@@ -65,7 +65,8 @@ function check_info(){
 				if(xhr.responseText == "success"){
 					_("register_form").reset();
 					_("error_msg").setAttribute("class", "text-success");
-					_("error_msg").innerHTML = "You have successfully registered! Click <a href='index.php'>here</a> to login now'";
+					_("error_msg").innerHTML = "You have successfully registered! Hold on a second while we take you back to the login page...";
+					setTimeout(function () {window.location.href = "index.php"; }, 2000);
 				}else{
 					_("error_msg").setAttribute("class", "text-danger");
 					_("error_msg").innerHTML = xhr.responseText;

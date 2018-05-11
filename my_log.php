@@ -2,7 +2,7 @@
 	session_start();
 	include 'database/check_login/check_login.php';
 	if($_SESSION['ID'] == 0){
-		header("Location: find_log.php");
+		header("Location: find_log.php?error=false");
 	}
 ?>
 <!DOCTYPE html>

@@ -99,7 +99,7 @@
 							</form>
 						</div>
 					</div>
-					<div class="col-md-6 offset-md-3" style="text-align: center;">
+					<div class="col-md-8 offset-md-2" style="text-align: center;">
 						<span id="error_msg" class="text-danger"></span>
 					</div>
 				</div>

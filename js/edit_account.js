@@ -2,6 +2,47 @@ function _(id){
 	return document.getElementById(id);
 } 
 
+function update_student_id(){
+	
+	_("update_studentnumber").disabled = true;
+	_("error_msg3").setAttribute("class", "text-danger");
+	
+	var student_number = _("student_number").value;
+	
+	console.log(student_number);
+	console.log(student_number.toString().length != 6 && student_number.toString().length != 7);
+	
+	if(student_number == ""){
+		_("error_msg3").innerHTML = "You cannot leave any fields blank";
+	}if(isNaN(student_number)){
+		_("error_msg3").innerHTML = "Your student number is not a number";
+	}else if(student_number < 0){
+		_("error_msg3").innerHTML = "That is an invalid student number";
+	}else if(student_number.toString().length != 6 && student_number.toString().length != 7){
+		_("error_msg3").innerHTML = "Your student number must be either 6 or 7 digits";
+	}else{
+		_("error_msg3").setAttribute("class", "text-warning");
+		_("error_msg3").innerHTML = "Loading...";
+		var formData = new FormData();
+		formData.append('student_number', student_number);
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "database/update_account/update_student_number.php", true);
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4 && xhr.status == 200){
+					if(xhr.responseText == "success"){
+						_("error_msg3").setAttribute("class", "text-success");
+						_("error_msg3").innerHTML = "Your student number was successfully updated";
+						_("account_number").innerHTML = student_number;
+					}else{
+						_("error_msg3").setAttribute("class", "text-danger");
+						_("error_msg3").innerHTML = xhr.responseText;
+					}
+				}
+			}
+		xhr.send(formData);
+	}
+}
+
 function update_names(){
 	
 	_("update_name").disabled = true;
@@ -74,44 +115,6 @@ function update_emails(){
 					}else{
 						_("error_msg2").setAttribute("class", "text-danger");
 						_("error_msg2").innerHTML = xhr.responseText;
-					}
-				}
-			}
-		xhr.send(formData);
-	}
-}
-
-function update_studentID(){
-	
-	_("update_studentnumber").disabled = true;
-	_("error_msg3").setAttribute("class", "text-danger");
-	
-	var student_number = _("student_number").value;
-	
-	if(student_number = ""){
-		_("error_msg3").innerHTML = "You cannot leave any fields blank";
-	}else if(isNaN(student_number)){
-		_("error_msg3").innerHTML = "Your student number is not a number";
-	}else if(student_number < 0){
-		_("error_msg3").innerHTML = "That is an invalid student number";
-	}else if(student_number.toString().length != 6 && student_number.toString().length != 7){
-		_("error_msg3").innerHTML = "Your student number must be either 6 or 7 digits";
-	}else{
-		_("error_msg3").setAttribute("class", "text-warning");
-		_("error_msg3").innerHTML = "Loading...";
-		var formData = new FormData();
-		formData.append('student_number', student_number);
-		var xhr = new XMLHttpRequest();
-		xhr.open("POST", "database/update_account/update_student_number.php", true);
-			xhr.onreadystatechange = function(){
-				if(xhr.readyState == 4 && xhr.status == 200){
-					if(xhr.responseText == "success"){
-						_("error_msg3").setAttribute("class", "text-success");
-						_("error_msg3").innerHTML = "Your student number was successfully updated";
-						_("account_number").innerHTML = student_number;
-					}else{
-						_("error_msg3").setAttribute("class", "text-danger");
-						_("error_msg3").innerHTML = xhr.responseText;
 					}
 				}
 			}

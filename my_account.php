@@ -151,7 +151,7 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form id="studentnumber_form" onsubmit="update_studentID(); _('update_studentnumber').disabled = false; return false;">
+						<form id="studentnumber_form" onsubmit="update_student_id(); _('update_studentnumber').disabled = false; return false;">
 							<div class="form-group">
 								<label for="student_number">Student number</label>
 								<input type="text" class="form-control" id="student_number" value="<?php print($_SESSION['student_id']);?>">

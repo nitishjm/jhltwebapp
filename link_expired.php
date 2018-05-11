@@ -17,8 +17,6 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/style.css">
 		
-		<!-- FORM CHECKING WITH JAVASCRIPT -->
-		<script src="js/check_login.js" type="text/javascript"></script>
 	</head>
 	
 	<body>
@@ -30,36 +28,14 @@
 				</picture>
 			</div>
 		</nav>
-		<div class="stage" style="padding-top: 100px;">
+		<div class="stage" id="unlogged_user" style="padding-top: 100px;">
 			<div class="container text-light">
-				<div class="jumbotron" style="background-color: rgba(12,12,12,0.75); border-radius: 10px;">
+				<div class="jumbotron" style="background-color: rgba(0,0,0,0.75); border-radius: 10px;">
 					<div class="row align-items-center">
 						<div class="col">
-							<h1 class="display-3 text-center">Hello!</h1>
-							<p class="lead text-center">Please sign in</p>
+							<h1 class="display-4 text-center">Sorry, that link has expired</h1>
+							<p class="lead text-center">Click <a href="index.php">here</a> to go back to the homepage</p>
 						</div>
-						<div class="col">
-							<form id="login_form" onsubmit="check_info(); _('login_btn').disabled = false; return false;">
-								<div class="form-group">
-									<label for="email">Email address</label>
-									<input type="text" class="form-control" id="email" placeholder="Enter email">
-								</div>
-								<div class="form-group">	
-									<label for="pword">Password</label>
-									<input type="password" class="form-control" id="pword" placeholder="Password">
-								</div>
-								<div class="btn-group d-flex justify-content-center" role="group">
-									<button type="submit" id="login_btn" class="btn btn-primary">Login</button>
-									<button type="button" onclick="window.location.href='register.php'" class="btn btn-info">Register</button>
-									<button type="button" onclick="window.location.href='send_reset_email.php'" class="btn btn-secondary">Reset my password!</button>
-								</div>
-								<small style="text-align: center;" id="warning" class="form-text text-muted"><br>Never share your email or password with anyone else. We won't either :)</small>
-								<br>
-							</form>
-						</div>
-					</div>
-					<div class="col-md-6 offset-md-6" style="text-align: center;">
-						<span id="error_msg" class="text-danger"></span>
 					</div>
 				</div>
 			</div>

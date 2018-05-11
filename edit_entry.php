@@ -3,10 +3,10 @@
 	include 'database/connect.php';
 	include 'database/check_login/check_login.php';
 	
-	$edit = $_GET["edit"];
+	$edit = mysqli_real_escape_string($db_found, $_GET["edit"]);
 	
 	if($edit){
-		$entry_id = $_GET["entry_id"];
+		$entry_id = mysqli_real_escape_string($db_found, $_GET["entry_id"]);
 	
 		$SQL = "SELECT * FROM tbl_log WHERE entry_id='". $entry_id ."'";
 		$result = mysqli_query($db_found, $SQL);
@@ -40,8 +40,9 @@
 		<link rel="stylesheet" href="css/style.css">
 		
 		<!-- FORM CHECKING WITH JAVASCRIPT -->
+		<?php $searched_id = $_SESSION['searched_id']; ?>
 		<script type="text/javascript">
-			 var searched_id ='<?php echo $_SESSION['searched_id'];?>'
+			 var searched_id = ;
 		</script>
 		<script src="js/update_entry.js" type="text/javascript"></script>
 		

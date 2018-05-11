@@ -12,6 +12,4 @@
 		$result = mysqli_query($db_found, $SQL);
 		header("Location: ../my_log.php");
 	}
-	
-
 ?>

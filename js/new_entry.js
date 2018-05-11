@@ -46,7 +46,8 @@ function check_info(){
 					if(xhr.responseText == "success"){
 						_("add_form").reset();
 						_("error_msg").setAttribute("class", "text-success");
-						_("error_msg").innerHTML = "You have successfully added an entry!";
+						_("error_msg").innerHTML = "You have successfully added an entry! Taking you to view your log...";
+						setTimeout(function () {window.location.href = "my_log.php"; }, 2000);
 					}else{
 						_("error_msg").setAttribute("class", "text-danger");
 						_("error_msg").innerHTML = xhr.responseText;
